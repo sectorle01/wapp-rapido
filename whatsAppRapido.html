@@ -10,6 +10,7 @@
     input, textarea, button { width: 100%; font-size: 16px; padding: 12px; box-sizing: border-box; }
     textarea { min-height: 120px; resize: vertical; }
     button { margin-top: 14px; font-weight: 700; cursor: pointer; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
     .hint { margin-top: 8px; font-size: 13px; opacity: .75; }
   </style>
 </head>
@@ -40,7 +41,7 @@
 
     sendBtn.addEventListener("click", () => {
       const phone = normalizaTelefono(phoneEl.value);
-      const msg = msgEl.value || "";
+      const msg = msgEl.value.trim();
 
       if (!phone) {
         alert("Pon un teléfono válido (solo números, con prefijo).");
@@ -48,6 +49,19 @@
         return;
       }
 
+      if (phone.length < 9) {
+        alert("Teléfono inválido (mínimo 9 dígitos).");
+        phoneEl.focus();
+        return;
+      }
+
+      if (!msg) {
+        alert("Escribe un mensaje.");
+        msgEl.focus();
+        return;
+      }
+
+      sendBtn.disabled = true;
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
       // Abre WhatsApp (o WhatsApp Web si procede)
       window.location.href = url;
