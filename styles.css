@@ -1,0 +1,92 @@
+:root{
+  --bg: #0b1220;
+  --card: rgba(255,255,255,.06);
+  --border: rgba(255,255,255,.12);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+  --accent: #1f6feb;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(31,111,235,.35), transparent 55%),
+              radial-gradient(900px 500px at 80% 20%, rgba(14,165,233,.25), transparent 55%),
+              var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.top{
+  max-width: 720px;
+  margin: 0 auto 14px;
+}
+
+.brand{
+  display:flex;
+  gap: 12px;
+  align-items:center;
+}
+
+.logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent), #0ea5e9);
+  display:grid;
+  place-items:center;
+  font-weight: 900;
+}
+
+.title{ font-size: 20px; font-weight: 800; line-height: 1.1; }
+.subtitle{ font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+.card{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+}
+
+label{ display:block; margin: 14px 0 6px; font-weight: 700; }
+input, textarea, button{
+  width: 100%;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0,0,0,.18);
+  color: var(--text);
+  outline: none;
+}
+
+textarea{ min-height: 120px; resize: vertical; }
+
+.row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+button{
+  background: linear-gradient(135deg, var(--accent), #0ea5e9);
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+button.secondary{
+  background: rgba(255,255,255,.08);
+  border: 1px solid var(--border);
+}
+
+button:disabled{ opacity: .6; cursor: not-allowed; }
+
+.hint{ color: var(--muted); font-size: 13px; margin: 12px 2px 0; line-height: 1.35; }
+.status{ margin: 10px 2px 0; font-size: 13px; color: var(--muted); }
