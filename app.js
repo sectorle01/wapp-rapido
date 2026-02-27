@@ -70,3 +70,26 @@ if ("serviceWorker" in navigator) {
     }
   });
 }
+
+let deferredPrompt = null;
+const installBtn = document.getElementById("install");
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();              // evita que Chrome lo muestre “cuando quiera”
+  deferredPrompt = e;              // guardamos el evento
+  installBtn.hidden = false;       // mostramos botón
+});
+
+installBtn?.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice; // accepted / dismissed
+  deferredPrompt = null;
+  installBtn.hidden = true;
+});
+
+// Si ya está instalada, ocultamos el botón
+window.addEventListener("appinstalled", () => {
+  deferredPrompt = null;
+  installBtn.hidden = true;
+});
