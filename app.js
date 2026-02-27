@@ -61,15 +61,12 @@ msgEl.addEventListener("keydown", (e) => {
   }
 });
 
-// Service Worker (PWA)
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
       await navigator.serviceWorker.register("./sw.js", { scope: "./" });
-      setStatus("Listo (PWA activada).");
-      setTimeout(() => setStatus(""), 1500);
-    } catch {
-      // Si falla, no pasa nada; la app sigue funcionando
+    } catch (e) {
+      // si falla, la web sigue funcionando
     }
   });
 }
