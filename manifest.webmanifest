@@ -2,7 +2,7 @@
   "name": "Wapp Rápido",
   "short_name": "WappRápido",
   "description": "Enviar WhatsApp sin guardar contactos",
-  "start_url": "./",
+  "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0b1220",
